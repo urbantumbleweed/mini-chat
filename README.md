@@ -14,7 +14,7 @@ You're also given 3 components to work with. They are -
   - AddChat.js: This component is responsible for getting new chat items from the input field, then making Ajax requests to save those chats to our [Parse](https://parse.com/) backend. 
   - ChatList.js: This component is responsible for getting all of the chats at our Parse Endpoint and rendering those to the screen.
 
-#Step 1.5: Check out the App.js File
+###Step 1.5: Check out the App.js File
 * This time I've given you the finished App.js file. Head over there and get a good feel for what's going on. Notice all we really have is an AddChat component we're giving a URL to and a ChatList component we're giving another URL to.
 
 ###Step 2: AddChat Component
