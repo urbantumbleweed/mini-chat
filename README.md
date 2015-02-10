@@ -5,9 +5,9 @@ Mini Project 2: Chat Room
 The purpose of this Mini Project is to get you used to using jQuery with React's life cycle events to make Ajax requests as well as checking and verifying your props with ```propTypes``` and ```getDefaultProps```. We'll be making a very basic Chatroom app shown here. (TODO URL HERE).
 
 ###Step 1: Create the Structure for Your Application
-* Rather than have you start form scratch, go ahead and fork/clone this repo. 
+* Rather than have you start from scratch, go ahead and fork/clone this repo. 
 
-You'll notice a the skeleton of this project is consistant with what we've used before. 
+You'll notice a the skeleton of this project is consistent with what we've used before. 
 
 You're also given 3 components to work with. They are - 
   - App.js: This component is mostly just a bootstrap wrapper around ```AddChat``` and ```ChatList```. and it's in this file where we'll use ```React.render``` to render our component. 
@@ -20,7 +20,7 @@ You're also given 3 components to work with. They are -
 ###Step 2: AddChat Component
 Let's start with our AddChat component. Remember, this component is responsible for getting new chats from the input field then making Ajax requests to Parse to save those chats. 
 
-* Set the inital state of AddChat to a ```chat``` variable whose value is an empty string. 
+* Set the initial state of AddChat to a ```chat``` variable whose value is an empty string. 
 
 Now, to make this component a little more dynamic, we're going to be passing in the URL endpoint as a prop. This makes this component more reusable because now anywhere else we need an input box that makes Ajax requests to a certain url, we can use this component and pass that URL in as a prop from the parent component. 
 
@@ -29,7 +29,7 @@ Now, to make this component a little more dynamic, we're going to be passing in 
 
 Now that our url is being validated, let's go ahead and make a method that will make our ```POST``` request. 
 
-* Createa an ```addChat``` method that will use jQuery's ```$.ajax``` to make a ```POST``` request with an object whose key is ```text``` and whose value is the chat property on our components state. **You'll need to add this line as a property on your request.**
+* Create an ```addChat``` method that will use jQuery's ```$.ajax``` to make a ```POST``` request with an object whose key is ```text``` and whose value is the chat property on our components state. **You'll need to add this line as a property on your request.**
 ```javascript
   beforeSend: function(request) {
     request.setRequestHeader("X-Parse-Application-Id", '1tNw34UWSqjkyu4byPGV3q1G6hZcYQmYuvqx0abS');
@@ -63,7 +63,7 @@ addChat: function(){
 
 * Now, create a ```handleSubmit``` method that we'll put on the input box so whenever there's a ```onKeyDown``` event, our handleSubmit method will get invoked, it will check to see if the key which was typed was the enter key (```e.keyCode === 13```). If it was enter, invoke the ```addChat``` method we made earlier then reset the ```chat``` state to be an empty string.
 
-* Createa a ```handleSubmit``` method which will update the ```chat``` state with whatever was typed in the input box in our render method.
+* Create a ```handleSubmit``` method which will update the ```chat``` state with whatever was typed in the input box in our render method.
 
 * Inside the ```form-group``` div in your ```render``` method create an input field with the following attributes
   - type is ```text```
@@ -137,10 +137,10 @@ module.exports = AddChat;
 
 ###Step 3: ChatList Component
 
-The purpose of this component is it receives a URL from its parent as a ```prop``` property, it then consistantly makes ```GET``` requests to fetch the data at the given URL to update its own internal state and then renders a unordered list of all of the items.
+The purpose of this component is it receives a URL from its parent as a ```prop``` property, it then consistently makes ```GET``` requests to fetch the data at the given URL to update its own internal state and then renders a unordered list of all of the items.
 
-* Set the intiial state of this component to be a ```chats``` property whose value is an empty array.
-* Verify that the ```url``` from props was passed in and it's a stirng.
+* Set the initial state of this component to be a ```chats``` property whose value is an empty array.
+* Verify that the ```url``` from props was passed in and it's a string.
 * If no ```url``` was passed in set the default url to ```https://api.parse.com/1/classes/chat```
 * Create a getChats method that uses jQuery's ```$.ajax``` to make a GET request to the url which was passed in and on success, sets the current ```chats``` state do the data we received from the request.
 
@@ -179,7 +179,7 @@ Now what we want to do is that when our component mounts, have our component inv
  - key of ```item.objectId``` if item is the first parameter in your map callback
  - inside the ```<li>``` you'll output ```item.text``` 
 
-* Once you have your ```list``` variable which is an array of ```<li>``` tags, display those betweetn your ```<ul></ul>``` tags. 
+* Once you have your ```list``` variable which is an array of ```<li>``` tags, display those between your ```<ul></ul>``` tags. 
 
 Once you finish, your ```ChatList.js``` file should look like this.
 
