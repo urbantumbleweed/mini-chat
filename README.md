@@ -2,7 +2,7 @@ Mini Project 2: Chat Room
 ============
 
 ##Objectives
-The purpose of this Mini Project is to get you used to using jQuery with React's life cycle events to make Ajax requests as well as checking and verifying your props with ```propTypes``` and ```getDefaultProps```. We'll be making a very basic Chatroom app shown here. (TODO URL HERE).
+The purpose of this Mini Project is to get you used to using jQuery with React's life cycle events to make Ajax requests as well as checking and verifying your props with ```propTypes``` and ```getDefaultProps```. We'll be making a very basic Chatroom app shown [HERE](http://reactweek.com/projects/mini-chatroom).
 
 ###Step 1: Create the Structure for Your Application
 * Rather than have you start from scratch, go ahead and fork/clone this repo. 
