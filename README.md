@@ -7,7 +7,7 @@ The purpose of this Mini Project is to get you used to using jQuery with React's
 ###Step 1: Create the Structure for Your Application
 * Rather than have you start from scratch, go ahead and fork/clone this repo. 
 
-You'll notice a the skeleton of this project is consistent with what we've used before. 
+You'll notice the skeleton of this project is consistent with what we've used before. 
 
 You're also given 3 components to work with. They are - 
   - App.js: This component is mostly just a bootstrap wrapper around ```AddChat``` and ```ChatList```. and it's in this file where we'll use ```React.render``` to render our component. 
