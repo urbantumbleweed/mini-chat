@@ -25,14 +25,14 @@ Let's start with our AddChat component. Remember, this component is responsible 
 Now, to make this component a little more dynamic, we're going to be passing in the URL endpoint as a prop. This makes this component more reusable because now anywhere else we need an input box that makes Ajax requests to a certain url, we can use this component and pass that URL in as a prop from the parent component. 
 
 * Use ```propTypes``` to make sure that a ```url`` is passed in with a value that's a string.
-It should look like this.
+* It should look like this.
 ```javascript
 propTypes: {
   url: React.PropTypes.string.isRequired
 }
 ```
 * Now, let's make it even more robust and, using ```getDefaultProps```, if no url is provided as a prop, set the url to be ```https://api.parse.com/1/classes/chat``` by default.
-And that should look something like this.
+* And that should look like this.
 ```javascript
 getDefaultProps: function(){
   return {
