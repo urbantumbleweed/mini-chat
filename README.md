@@ -15,7 +15,7 @@ You're given 3 components to work with. They are -
   - ChatList.js: This component is responsible for getting all of the chats at our Parse Endpoint and rendering those to the screen.
 
 ###Step 1.5: Check out the App.js File
-* This time I've given you the finished App.js file. Head over there and get a good feel for what's going on. Notice all we really have is an AddChat component we're giving a URL to and a ChatList component we're giving another URL to.
+* This time I've given you the finished App.js file. Head over there and get a good feel for what's going on. Notice all we really have is an AddChat component to which we're giving a URL and a ChatList component to which we're giving another URL.
 
 ###Step 2: AddChat Component
 Let's start with our AddChat component. Remember, this component is responsible for getting new chats from the input field then making Ajax requests to Parse to save those chats. 
@@ -25,8 +25,21 @@ Let's start with our AddChat component. Remember, this component is responsible 
 Now, to make this component a little more dynamic, we're going to be passing in the URL endpoint as a prop. This makes this component more reusable because now anywhere else we need an input box that makes Ajax requests to a certain url, we can use this component and pass that URL in as a prop from the parent component. 
 
 * Use ```propTypes``` to make sure that a ```url`` is passed in with a value that's a string.
+It should look like this.
+```javascript
+propTypes: {
+  url: React.PropTypes.string.isRequired
+}
+```
 * Now, let's make it even more robust and, using ```getDefaultProps```, if no url is provided as a prop, set the url to be ```https://api.parse.com/1/classes/chat``` by default.
-
+And that should look something like this.
+```javascript
+getDefaultProps: function(){
+  return {
+    url: "https://api.parse.com/1/classes/chat"
+  }
+}
+```
 Now that our url is being validated, let's go ahead and make a method that will make our ```POST``` request. 
 
 * Create an ```addChat``` method that will use jQuery's ```$.ajax``` to make a ```POST``` request with an object whose key is ```text``` and whose value is the chat property on our components state. **You'll need to add this line as a property on your request.**
