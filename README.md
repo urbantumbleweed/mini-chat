@@ -18,7 +18,7 @@ You're given 3 components to work with. They are -
 * This time I've given you the finished App.js file. Head over there and get a good feel for what's going on. Notice all we really have is an AddChat component to which we're giving a URL and a ChatList component to which we're giving another URL.
 
 ###Step 2: AddChat Component
-Let's start with our AddChat component. Remember, this component is responsible for getting new chats from the input field then making Ajax requests to Parse to save those chats. 
+Let's start with our AddChat component. Remember, this component is responsible for getting new chats from the input field then making Ajax requests to Parse to save those chats. Notice that we are requiring jQuery at the top and saving it the variable ```$```. We'll use this for our Ajax calls.
 
 * Set the initial state of AddChat to a ```chat``` variable whose value is an empty string. 
 
