@@ -10,7 +10,7 @@ The purpose of this Mini Project is to get you used to using jQuery with React's
 You'll notice the skeleton of this project is consistent with what we've used before. 
 
 You're given 3 components to work with. They are - 
-  - App.js: This component is mostly just a bootstrap wrapper around ```AddChat``` and ```ChatList```. and it's in this file where we'll use ```React.render``` to render our component. 
+  - App.js: This component is mostly just a bootstrap wrapper around ```AddChat``` and ```ChatList```. It's the file where we'll use ```React.render``` to render our component. 
   - AddChat.js: This component is responsible for getting new chat items from the input field, then making Ajax requests to save those chats to our [Parse](https://parse.com/) backend. 
   - ChatList.js: This component is responsible for getting all of the chats at our Parse Endpoint and rendering those to the screen.
 
