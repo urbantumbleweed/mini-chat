@@ -26,22 +26,23 @@ Now, to make this component a little more dynamic, we're going to be passing in 
 
 * Use ```propTypes``` to make sure that a ```url`` is passed in with a value that's a string.
   * It should look like this.
-```javascript
-propTypes: {
-  url: React.PropTypes.string.isRequired
-}
-```
+  ```javascript
+  propTypes: {
+    url: React.PropTypes.string.isRequired
+  }
+  ```
 * Now, let's make it even more robust and, using ```getDefaultProps```, if no url is provided as a prop, set the url to be ```https://api.parse.com/1/classes/chat``` by default.
   * And that should look like this.
-```javascript
-getDefaultProps: function(){
-  return {
-    url: "https://api.parse.com/1/classes/chat"
+  ```javascript
+  getDefaultProps: function(){
+    return {
+      url: "https://api.parse.com/1/classes/chat"
+    }
   }
-}
-```
+  ```
 Now that our url is being validated, let's go ahead and make a method that will make our ```POST``` request. 
 
+* In this next section we'll be using jQuery's ```$.ajax``` to make our Ajax requests. If you're unfamiliar with this and want to better understand its syntax [check out the documentation on ```$.ajax``` here](http://api.jquery.com/jquery.ajax/).
 * Create an ```addChat``` method that will use jQuery's ```$.ajax``` to make a ```POST``` request with an object whose key is ```text``` and whose value is the chat property on our components state. **You'll need to add this line as a property on your request.**
 ```javascript
   beforeSend: function(request) {
@@ -150,7 +151,7 @@ module.exports = AddChat;
 
 ###Step 3: ChatList Component
 
-The purpose of this component is it receives a URL from its parent as a ```prop``` property, it then consistently makes ```GET``` requests to fetch the data at the given URL to update its own internal state and then renders a unordered list of all of the items.
+The purpose of this component is to receive a URL from its parent as a ```prop``` property, consistently make ```GET``` requests to fetch the data at the given URL to update its own internal state, and then render an unordered list of all the items.
 
 * Set the initial state of this component to be a ```chats``` property whose value is an empty array.
 * Verify that the ```url``` from props was passed in and it's a string.
@@ -183,9 +184,17 @@ getChats: function(){
 ```
 A few things to note. Inside our success callback we're using ```this.isMounted```. The reason for this is because "when processing the response of an asynchronous request, be sure to check that the component is still mounted before updating its state by using this.isMounted()." [Source](http://facebook.github.io/react/tips/initial-ajax.html)
 
-Now what we want to do is that when our component mounts, have our component invoke our ```getChats``` method every second so our ```chats``` state gets updated if there are new chats. 
+Now once our component mounts, we want to have our component invoke our ```getChats``` method every second so our ```chats``` state gets updated if there are new chats. 
 
 * Inside ```componentDidMount``` use ```setInterval``` to make it so every second our ```getChats``` method is invoked.
+  * It will look like this
+  ```javascript
+  componentDidMount: function(){
+    setInterval(function(){
+      this.getChats()
+    }.bind(this), 1000)
+  }
+  ```
 
 * Now inside the render method create a ```list``` variable that is the result of mapping over ```chats``` and is a collection of ```<li>``` elements with the following properties
  - class of ```list-group-item```
