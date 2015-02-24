@@ -190,9 +190,7 @@ Now once our component mounts, we want to have our component invoke our ```getCh
   * It will look like this
   ```javascript
   componentDidMount: function(){
-    setInterval(function(){
-      this.getChats()
-    }.bind(this), 1000)
+    setInterval(this.getChats, 1000)
   }
   ```
 
@@ -246,9 +244,7 @@ var ChatList = React.createClass({
   },
   componentDidMount: function() {
     this.getChats();
-    setInterval(function(){
-      this.getChats();
-    }.bind(this), 1000)
+    setInterval(this.getChats, 1000)
   },
   render: function(){
     var list = this.state.chats.map(function(item, index){
