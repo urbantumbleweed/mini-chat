@@ -144,7 +144,7 @@ module.exports = AddChat;
 
 ###Step 3: ChatList Component
 
-The purpose of this component is to receive a URL from its parent as a ```prop``` property, consistently make ```GET``` requests to fetch the data at the given URL to update its own internal state, and then render an unordered list of all the items.
+The purpose of this component is to receive a URL from its parent as a ```url``` property, consistently make ```GET``` requests to fetch the data at the given URL to update its own internal state, and then render an unordered list of all the items.
 
 * Set the initial state of this component to be a ```chats``` property whose value is an empty array.
 * Verify that the ```url``` from props was passed in and it's a string.
