@@ -82,6 +82,7 @@ addChat: function(){
 * Inside the ```form-group``` div in your ```render``` method create an input field with the following attributes
   - type is ```text```
   - placeholder is ```Compose Message```
+  - ref is ```newChatInput```
   - has a class of ```form-control```
   - onKeyDown invokes the ```handleSubmit``` method
   
