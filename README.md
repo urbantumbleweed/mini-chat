@@ -77,7 +77,6 @@ addChat: function(){
 
 * Now, create a ```handleSubmit``` method that we'll put on the input box so whenever there's a ```onKeyDown``` event, our handleSubmit method will get invoked, it will check to see if the key which was typed was the enter key (```e.keyCode === 13```). If it was enter, invoke the ```addChat``` method we made earlier then reset the ```chat``` state to be an empty string.
 
-* Create a ```handleChange``` method which will update the ```chat``` state with whatever was typed in the input box in our render method.
 
 * Inside the ```form-group``` div in your ```render``` method create an input field with the following attributes
   - type is ```text```
