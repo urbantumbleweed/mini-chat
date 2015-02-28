@@ -83,8 +83,6 @@ addChat: function(){
   - type is ```text```
   - placeholder is ```Compose Message```
   - has a class of ```form-control```
-  - has a value set to whatever the current ```chat``` state is
-  - onChange invokes the ```handleChange``` method
   - onKeyDown invokes the ```handleSubmit``` method
   
 Once you get done, your AddChat.js file should look like this 
