@@ -43,7 +43,7 @@ Now, to make this component a little more dynamic, we're going to be passing in 
 Now that our url is being validated, let's go ahead and make a method that will make our ```POST``` request. 
 
 * In this next section we'll be using jQuery's ```$.ajax``` to make our Ajax requests. If you're unfamiliar with this and want to better understand its syntax [check out the documentation on ```$.ajax``` here](http://api.jquery.com/jquery.ajax/).
-* Create an ```addChat``` method that will use jQuery's ```$.ajax``` to make a ```POST``` request with an object whose key is ```text``` and whose value is the chat property on our components state. **You'll need to add this line as a property on your request.**
+* Create an ```addChat``` method that will use jQuery's ```$.ajax``` to make a ```POST``` request with an object whose key is ```text``` and whose value is the value from our input. **You'll need to add this line as a property on your request.**
 ```javascript
   beforeSend: function(request) {
     request.setRequestHeader("X-Parse-Application-Id", '1tNw34UWSqjkyu4byPGV3q1G6hZcYQmYuvqx0abS');
