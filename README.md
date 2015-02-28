@@ -110,7 +110,7 @@ var AddChat = React.createClass({
     $.ajax({
       url: this.props.url,
       type: 'POST',
-      data: JSON.stringify({text: this.state.chat}),
+      data: JSON.stringify({text: this.refs.newChatInput.getDOMNode().value}),
       beforeSend: function(request) {
         request.setRequestHeader("X-Parse-Application-Id", '1tNw34UWSqjkyu4byPGV3q1G6hZcYQmYuvqx0abS');
         request.setRequestHeader("X-Parse-REST-API-Key", 'ALlZ2WvYnreWNPfHQXoRRiDWt0pXkryYINGAzqnc');
@@ -132,15 +132,10 @@ var AddChat = React.createClass({
       })
     }
   },
-  handleChange: function(e){
-    this.setState({
-      chat: e.target.value
-    })
-  },
   render: function(){
     return (
       <div className="form-group">
-        <input type="text" placeholder="Compose Message" className="form-control" value={this.state.chat} onChange={this.handleChange} onKeyDown={this.handleSubmit} />
+        <input type="text" ref='newChatInput' placeholder="Compose Message" className="form-control" onKeyDown={this.handleSubmit} />
       </div>
     )
   }
