@@ -125,9 +125,7 @@ var AddChat = React.createClass({
   handleSubmit: function(e){
     if(e.keyCode === 13){
       this.addChat();
-      this.setState({
-        chat: ''
-      })
+      this.refs.newChatInput.getDOMNode().value = '';
     }
   },
   render: function(){
