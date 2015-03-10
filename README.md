@@ -18,7 +18,7 @@ You're given 3 components to work with. They are -
 * This time I've given you the finished App.js file. Head over there and get a good feel for what's going on. Notice all we really have is an AddChat component to which we're giving a URL and a ChatList component to which we're giving another URL.
 
 ###Step 2: AddChat Component
-Let's start with our AddChat component. Remember, this component is responsible for getting new chats from the input field then making Ajax requests to Parse to save those chats. Notice that we are requiring jQuery at the top and saving it the variable ```$```. We'll use this for our Ajax calls.
+Let's start with our AddChat component. Remember, this component is responsible for getting new chats from the input field then making Ajax requests to Parse to save those chats. Notice that we are requiring jQuery at the top and saving it to the variable ```$```. We'll use this for our Ajax calls.
 
 * Set the initial state of AddChat to a ```chat``` variable whose value is an empty string. 
 
@@ -46,12 +46,14 @@ Now that our url is being validated, let's go ahead and make a method that will 
 * Create an ```addChat``` method that will use jQuery's ```$.ajax``` to make a ```POST``` request with an object whose key is ```text``` and whose value is the value from our input. **You'll need to add this line as a property on your request.**
 ```javascript
   beforeSend: function(request) {
-    request.setRequestHeader("X-Parse-Application-Id", '1tNw34UWSqjkyu4byPGV3q1G6hZcYQmYuvqx0abS');
-    request.setRequestHeader("X-Parse-REST-API-Key", 'ALlZ2WvYnreWNPfHQXoRRiDWt0pXkryYINGAzqnc');
+    request.setRequestHeader("X-Parse-Application-Id", 'YOUR-PARSE-APP-ID');
+    request.setRequestHeader("X-Parse-REST-API-Key", 'YOUR-PARSE-API-KEY');
     request.setRequestHeader("Content-Type", 'application/json');
   }
 ```
-I realize it's not the best idea to share private keys but you're all here to learn React, not to learn how to set up an account with Parse. Please don't do anything malicious with those keys.
+I realize if you were building a real production app you'd set up proxy server and not expose your keys on the front end. Good news is we're not building a real production app and we're just practicing how to make AJAX requests with React. If this bugs you, feel free to spin up your own server to make these requests.
+
+To get your own Parse keys, sign up at [Parse.com](http://parse.com), create an app, click on "data" -> "web" -> "new project" then your keys should be there. If not, call over a mentor or research how to build a new app with Parse.
 
 Once you've done that, your ```addChat``` method should look something like this. 
 ```javascript
@@ -61,8 +63,8 @@ addChat: function(){
     type: 'POST',
     data: JSON.stringify({text: this.state.chat}),
     beforeSend: function(request) {
-      request.setRequestHeader("X-Parse-Application-Id", '1tNw34UWSqjkyu4byPGV3q1G6hZcYQmYuvqx0abS');
-      request.setRequestHeader("X-Parse-REST-API-Key", 'ALlZ2WvYnreWNPfHQXoRRiDWt0pXkryYINGAzqnc');
+      request.setRequestHeader("X-Parse-Application-Id", 'YOUR-PARSE-APP-ID');
+      request.setRequestHeader("X-Parse-REST-API-Key", 'YOUR-PARSE-API-KEY');
       request.setRequestHeader("Content-Type", 'application/json');
     },
     error: function() {
@@ -110,8 +112,8 @@ var AddChat = React.createClass({
       type: 'POST',
       data: JSON.stringify({text: this.refs.newChatInput.getDOMNode().value}),
       beforeSend: function(request) {
-        request.setRequestHeader("X-Parse-Application-Id", '1tNw34UWSqjkyu4byPGV3q1G6hZcYQmYuvqx0abS');
-        request.setRequestHeader("X-Parse-REST-API-Key", 'ALlZ2WvYnreWNPfHQXoRRiDWt0pXkryYINGAzqnc');
+        request.setRequestHeader("X-Parse-Application-Id", 'YOUR-PARSE-APP-ID');
+        request.setRequestHeader("X-Parse-REST-API-Key", 'YOUR-PARSE-API-KEY');
         request.setRequestHeader("Content-Type", 'application/json');
       },
       error: function() {
@@ -156,8 +158,8 @@ getChats: function(){
     url: this.props.url,
     type: 'GET',
     beforeSend: function(request) {
-      request.setRequestHeader("X-Parse-Application-Id", '1tNw34UWSqjkyu4byPGV3q1G6hZcYQmYuvqx0abS');
-      request.setRequestHeader("X-Parse-REST-API-Key", 'ALlZ2WvYnreWNPfHQXoRRiDWt0pXkryYINGAzqnc');
+      request.setRequestHeader("X-Parse-Application-Id", 'YOUR-PARSE-APP-ID');
+      request.setRequestHeader("X-Parse-REST-API-Key", 'YOUR-PARSE-API-KEY');
       request.setRequestHeader("Content-Type", 'application/json');
     },
     error: function(data) {
