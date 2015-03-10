@@ -179,13 +179,23 @@ A few things to note. Inside our success callback we're using ```this.isMounted`
 
 Now once our component mounts, we want to have our component invoke our ```getChats``` method every second so our ```chats``` state gets updated if there are new chats. 
 
-* Inside ```componentDidMount``` use ```setInterval``` to make it so every second our ```getChats``` method is invoked.
+* Inside ```componentDidMount``` use ```setInterval``` to make it so every second our ```getChats``` method is invoked. *Hint: We need a way to cancel our interval when the component unmounts. We can do this by saving the result of our setInterval invocation to a property on ```this``` so we can then clear the interval in ```componentDidUnmount```*
   * It will look like this
   ```javascript
   componentDidMount: function(){
-    setInterval(this.getChats, 1000)
+    this.interval = setInterval(function(){
+      this.getChats();
+    }.bind(this), 1000)
   }
   ```
+* Now when the component unmounts, use ```clearInterval``` (built into JavaScript) to clear the interval we created earlier. 
+
+The code should look like this,
+```javascript
+  componentWillUnmount: function() {
+    clearInterval(this.interval);
+  }
+```
 
 * Now inside the render method create a ```list``` variable that is the result of mapping over ```chats``` and is a collection of ```<li>``` elements with the following properties
  - class of ```list-group-item```
