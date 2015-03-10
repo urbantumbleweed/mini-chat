@@ -20,9 +20,7 @@ You're given 3 components to work with. They are -
 ###Step 2: AddChat Component
 Let's start with our AddChat component. Remember, this component is responsible for getting new chats from the input field then making Ajax requests to Parse to save those chats. Notice that we are requiring jQuery at the top and saving it to the variable ```$```. We'll use this for our Ajax calls.
 
-* Set the initial state of AddChat to a ```chat``` variable whose value is an empty string. 
-
-Now, to make this component a little more dynamic, we're going to be passing in the URL endpoint as a prop. This makes this component more reusable because now anywhere else we need an input box that makes Ajax requests to a certain url, we can use this component and pass that URL in as a prop from the parent component. 
+To make this component a little more dynamic, we're going to be passing in the URL endpoint as a prop. This makes this component more reusable because now anywhere else we need an input box that makes Ajax requests to a certain url, we can use this component and pass that URL in as a prop from the parent component. 
 
 * Use ```propTypes``` to make sure that a ```url`` is passed in with a value that's a string.
   * It should look like this.
@@ -40,6 +38,8 @@ Now, to make this component a little more dynamic, we're going to be passing in 
     }
   }
   ```
+Admittedly, you'd probably never use propTypes and getDefaultProps together, but we're mostly concerned with getting practice with both of them, hence we'll use them both. 
+
 Now that our url is being validated, let's go ahead and make a method that will make our ```POST``` request. 
 
 * In this next section we'll be using jQuery's ```$.ajax``` to make our Ajax requests. If you're unfamiliar with this and want to better understand its syntax [check out the documentation on ```$.ajax``` here](http://api.jquery.com/jquery.ajax/).
@@ -61,7 +61,7 @@ addChat: function(){
   $.ajax({
     url: this.props.url,
     type: 'POST',
-    data: JSON.stringify({text: this.state.chat}),
+    data: JSON.stringify({text: this.refs.newChatInput.getDOMNode().value}),
     beforeSend: function(request) {
       request.setRequestHeader("X-Parse-Application-Id", 'YOUR-PARSE-APP-ID');
       request.setRequestHeader("X-Parse-REST-API-Key", 'YOUR-PARSE-API-KEY');
@@ -77,7 +77,7 @@ addChat: function(){
 }
 ```
 
-* Now, create a ```handleSubmit``` method that we'll put on the input box so whenever there's a ```onKeyDown``` event, our handleSubmit method will get invoked, it will check to see if the key which was typed was the enter key (```e.keyCode === 13```). If it was enter, invoke the ```addChat``` method we made earlier then reset the ```chat``` state to be an empty string.
+* Now, create a ```handleSubmit``` method that we'll put on the input box so whenever there's a ```onKeyDown``` event, our handleSubmit method will get invoked, it will check to see if the key which was typed was the enter key (```e.keyCode === 13```). If it was enter, invoke the ```addChat``` method we made earlier then reset the ```newChatInput``` ref to be an empty string. 
 
 
 * Inside the ```form-group``` div in your ```render``` method create an input field with the following attributes
@@ -93,11 +93,6 @@ var React = require('react');
 var $ = require('jquery');
 
 var AddChat = React.createClass({
-  getInitialState: function(){
-    return {
-      chat: ''
-    }
-  },
   propTypes: {
     url: React.PropTypes.string.isRequired
   },
@@ -120,20 +115,24 @@ var AddChat = React.createClass({
         console.log('error on post');
       },
       success: function() {
+        this.refs.newChatInput.getDOMNode().value = '';
         console.log('Successful Post');
-      }
+      }.bind(this)
     })
   },
   handleSubmit: function(e){
     if(e.keyCode === 13){
       this.addChat();
-      this.refs.newChatInput.getDOMNode().value = '';
     }
   },
   render: function(){
     return (
       <div className="form-group">
-        <input type="text" ref='newChatInput' placeholder="Compose Message" className="form-control" onKeyDown={this.handleSubmit} />
+        <input 
+          type="text" 
+          ref='newChatInput'  placeholder="Compose Message" 
+          className="form-control" 
+          onKeyDown={this.handleSubmit} />
       </div>
     )
   }
