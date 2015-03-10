@@ -246,8 +246,12 @@ var ChatList = React.createClass({
     })
   },
   componentDidMount: function() {
-    this.getChats();
-    setInterval(this.getChats, 1000)
+    this.interval = setInterval(function(){
+      this.getChats();
+    }.bind(this), 1000)
+  },
+  componentWillUnmount: function() {
+    clearInterval(this.interval);
   },
   render: function(){
     var list = this.state.chats.map(function(item, index){
