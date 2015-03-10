@@ -148,7 +148,7 @@ The purpose of this component is to receive a URL from its parent as a ```url```
 * Set the initial state of this component to be a ```chats``` property whose value is an empty array.
 * Verify that the ```url``` from props was passed in and it's a string.
 * If no ```url``` was passed in set the default url to ```https://api.parse.com/1/classes/chat```
-* Create a getChats method that uses jQuery's ```$.ajax``` to make a GET request to the url which was passed in and on success, sets the current ```chats``` state do the data we received from the request.
+* Create a getChats method that uses jQuery's ```$.ajax``` to make a GET request to the url which was passed in and on success, sets the current ```chats``` state to the data we received from the request.
 
 Once finished, your getChats method should look similar to this.
 ```javascript
