@@ -219,8 +219,8 @@ var ChatList = React.createClass({
       url: this.props.url,
       type: 'GET',
       beforeSend: function(request) {
-        request.setRequestHeader("X-Parse-Application-Id", '1tNw34UWSqjkyu4byPGV3q1G6hZcYQmYuvqx0abS');
-        request.setRequestHeader("X-Parse-REST-API-Key", 'ALlZ2WvYnreWNPfHQXoRRiDWt0pXkryYINGAzqnc');
+        request.setRequestHeader("X-Parse-Application-Id", 'YOUR-PARSE-APP-ID');
+        request.setRequestHeader("X-Parse-REST-API-Key", 'YOUR-PARSE-API-KEY');
         request.setRequestHeader("Content-Type", 'application/json');
       },
       error: function(data) {
